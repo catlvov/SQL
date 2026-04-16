@@ -14,7 +14,7 @@ Global
 		Default|Default = Default|Default
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{5F02CC61-0657-4DE4-B5E9-7285494CC460}.Default|Default.ActiveCfg = Default
+		{91C602FB-F270-4436-A77A-BC19382F092A}.Default|Default.ActiveCfg = Default
 		{AA7AF016-CAC7-4A1A-BCF6-3C29D3AE55D0}.Default|Default.ActiveCfg = Default
 		{D3A395A5-B12F-448C-B065-CD8B25070D59}.Default|Default.ActiveCfg = Default
 		{8D02AD2F-09C6-4A55-8E46-E3D016120F54}.Default|Default.ActiveCfg = Default
