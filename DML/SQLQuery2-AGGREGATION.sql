@@ -46,21 +46,19 @@ USE p_421_import
 --    AND DATEDIFF(HOUR, birth_date, GETDATE()) / 8766 BETWEEN 22 AND 35
 --ORDER BY [Возраст];
 
+--SELECT
+--	[Group] = group_name,
+--	[Кол-во студентов] = COUNT(stud_id)
+--FROM Groups, Students
+--WHERE [group] = group_id 
+--GROUP BY group_name
+--HAVING COUNT(stud_id) < 10
+--;
+
 SELECT
 	[Group] = group_name,
-	[Кол-во студентов] = COUNT(stud_id)
-FROM Groups, Students
-WHERE [group] = group_id 
-GROUP BY group_name
-HAVING COUNT(stud_id) < 10
+	[Кол-во студентов] = (SELECT COUNT(stud_id) FROM Students WHERE [group]=group_id)
+FROM Groups
+WHERE (SELECT COUNT(stud_id) FROM Students WHERE [group]=group_id) = 0
 ;
-
-
-SELECT
-    [Группа] = group_name,
-    COUNT(stud_id) AS student_count
-FROM Groups, Students
-GROUP BY group_id
-HAVING COUNT(stud_id) = 1;
-
-SELECT * FROM Groups
+--(SELECT COUNT(stud_id) FROM Students, Groups WHERE [group]=group_id)
