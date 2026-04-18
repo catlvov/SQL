@@ -55,13 +55,12 @@ GROUP BY group_name
 HAVING COUNT(stud_id) < 10
 ;
 
+
 SELECT
-	[Group] = group_name,
-	[Кол-во студентов] = COUNT(stud_id)
+    [Группа] = group_name,
+    COUNT(stud_id) AS student_count
 FROM Groups, Students
-WHERE [group] = group_id 
-GROUP BY group_name
-HAVING COUNT(stud_id) = 1
-;
+GROUP BY group_id
+HAVING COUNT(stud_id) = 1;
 
 SELECT * FROM Groups
