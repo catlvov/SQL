@@ -52,7 +52,7 @@ SELECT
 FROM Groups, Students
 WHERE [group] = group_id 
 GROUP BY group_name
-HAVING COUNT(stud_id) > 10
+HAVING COUNT(stud_id) < 10
 ;
 
 SELECT
@@ -61,5 +61,7 @@ SELECT
 FROM Groups, Students
 WHERE [group] = group_id 
 GROUP BY group_name
-HAVING COUNT(stud_id) = 0
+HAVING COUNT(stud_id) = 1
 ;
+
+SELECT * FROM Groups
