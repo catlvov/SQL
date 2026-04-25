@@ -3,7 +3,7 @@ USE P_421_Import;
 SET DATEFIRST 1;
 GO
 
-ALTER PROCEDURE sp_InsertSchedule
+CREATE OR ALTER PROCEDURE sp_InsertSchedule
 		@group_name			AS	NVARCHAR(10),
 		@discipline_name	AS	NVARCHAR(150),
 		@teacher_name		AS	NVARCHAR(50),
@@ -24,7 +24,9 @@ BEGIN
 		BEGIN
 				SET @time = @start_time;
 				EXEC sp_InsertLesson @group, @discipline, @teacher, @date, @time OUTPUT, @lesson_number OUTPUT;
+				PRINT FORMATMESSAGE(N'%s %s %s %i', CAST(@date AS NVARCHAR), CAST(@time AS NVARCHAR), DATENAME(WEEKDAY,@date), @lesson_number + 1);
 				EXEC sp_InsertLesson @group, @discipline, @teacher, @date, @time OUTPUT, @lesson_number OUTPUT;
-				SET @date = DATEADD(DAY, IIF(DATEPART(WEEKDAY, @date)=2,2,5), @date);
+				PRINT FORMATMESSAGE(N'%s %s %s %i', CAST(@date AS NVARCHAR), CAST(@time AS NVARCHAR), DATENAME(WEEKDAY,@date), @lesson_number + 1);
+				SET @date = dbo.GetNextLearningDate(@group_name,@date)--DATEADD(DAY, IIF(DATEPART(WEEKDAY, @date)=2,2,5), @date);
 		END
 END

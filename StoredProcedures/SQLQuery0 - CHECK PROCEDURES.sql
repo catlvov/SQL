@@ -1,5 +1,6 @@
 --SQLQuery0-CHECK PROCEDURES.sql
 USE P_421_Import;
+SET DATEFIRST 1;
 
 --DELETE FROM Schedule;
 

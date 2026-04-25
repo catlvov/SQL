@@ -1,8 +1,9 @@
 --SQLQuery2-INSERT Lesson.sql
 USE P_421_Import;
+SET DATEFIRST 1;
 GO
 
-ALTER PROCEDURE sp_InsertLesson
+CREATE PROCEDURE sp_InsertLesson
 		@group			AS	INT,
 		@discipline		AS	SMALLINT,
 		@teacher		AS	SMALLINT,
