@@ -2,7 +2,7 @@ USE p_421_import;
 SET DATEFIRST 1;
 GO
 
-CREATE FUNCTION GetNextLearningDay(@group_name AS NVARCHAR(10), @date AS DATE)RETURNS TINYINT
+CREATE OR  FUNCTION GetNextLearningDay(@group_name AS NVARCHAR(10), @date AS DATE)RETURNS TINYINT
 AS
 BEGIN
 	DECLARE @learning_days AS TINYINT = (SELECT learning_days FROM Groups WHERE group_name=@group_name)

@@ -24,9 +24,9 @@ BEGIN
 		BEGIN
 				SET @time = @start_time;
 				EXEC sp_InsertLesson @group, @discipline, @teacher, @date, @time OUTPUT, @lesson_number OUTPUT;
-				PRINT FORMATMESSAGE(N'%s %s %s %i', CAST(@date AS NVARCHAR), CAST(@time AS NVARCHAR), DATENAME(WEEKDAY,@date), @lesson_number + 1);
+				--PRINT FORMATMESSAGE(N'%s %s %s %i', CAST(@date AS NVARCHAR), CAST(@time AS NVARCHAR), DATENAME(WEEKDAY,@date), @lesson_number + 1);
 				EXEC sp_InsertLesson @group, @discipline, @teacher, @date, @time OUTPUT, @lesson_number OUTPUT;
-				PRINT FORMATMESSAGE(N'%s %s %s %i', CAST(@date AS NVARCHAR), CAST(@time AS NVARCHAR), DATENAME(WEEKDAY,@date), @lesson_number + 1);
-				SET @date = dbo.GetNextLearningDate(@group_name,@date)--DATEADD(DAY, IIF(DATEPART(WEEKDAY, @date)=2,2,5), @date);
+				--PRINT FORMATMESSAGE(N'%s %s %s %i', CAST(@date AS NVARCHAR), CAST(@time AS NVARCHAR), DATENAME(WEEKDAY,@date), @lesson_number + 1);
+				SET @date = dbo.GetNextLearningDate(@group_name,@date) --DATEADD(DAY, IIF(DATEPART(WEEKDAY, @date)=2,2,5), @date);
 		END
 END

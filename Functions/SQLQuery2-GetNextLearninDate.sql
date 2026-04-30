@@ -9,5 +9,8 @@ AS
 BEGIN 
 	DECLARE @interval AS INT       = CAST(dbo.GetNextLearningDay(@group_name,@date)AS INT) - DATEPART(WEEKDAY,@date);
 	IF @interval < 0 SET @interval = @interval+7;
-	RETURN DATEADD(DAY, @interval, @date);
+	DECLARE @next_date AS DATE	   = DATEADD(DAY,@interval,@date);
+	IF EXISTS (SELECT hiliday FROM DaysOFF WHERE [date]=@next_date)
+		SET @next_date = dbo.GetNextLearningDate(@group_name,@next_date);
+	RETURN @next_date;
 END
